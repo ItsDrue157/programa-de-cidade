@@ -20,6 +20,8 @@ Digite 2 para verificar se a sua cidade está na lista: ''')
         # Processamento da escolha
         if escolha == '1':
             Mostrar_cidades()
+            time.sleep(10)
+            Exibir_menu()
            
         elif escolha == '2':
             Verificar_cidade_na_lista()
