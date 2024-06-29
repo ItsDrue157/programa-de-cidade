@@ -2,8 +2,9 @@ import os
 import time
 import pandas as pd
 
-lista_arquivo = []
-caminho_arquivo = "/programa de cidade/dados"
+lista_arquivo = [] 
+caminho_da_lista = 'dados.csv'
+
 
 def App():
     def Exibir_menu():
@@ -33,9 +34,17 @@ Digite 2 para verificar se a sua cidade está na lista: ''')
     
     def Mostrar_cidades():
         #pd.read_csv = vai ser como o arquivo esta salvo o r'' eh para ler caminos
-        lista = pd.read_csv(r'C:\Users\Carlos\Desktop\programa de cidade\dados.csv')
+        lista = pd.set_option('display.max_rows', 350)
+        lista = pd.read_csv("dados.csv")
 #             transforma a tabela em uma tring q pode ser mostrada.
-        print(lista.to_string(index=False))
+        print(lista)
+        time.sleep(5)
+        voltar_ao_menu = input('Deseja voltar ao menu? s/n ')
+        match voltar_ao_menu:
+            case 's':
+                Voltar_ao_menu()
+            case 'n':
+                exit()
     
 
     def Verificar_cidade_na_lista():
@@ -45,7 +54,12 @@ Digite 2 para verificar se a sua cidade está na lista: ''')
         else:
             print(f'A cidade {cidade_digitada} não está na lista.')
         time.sleep(3)
-        Voltar_ao_menu()
+        voltar_ao_menu = input('Deseja voltar ao menu? s/n ')
+        match voltar_ao_menu:
+            case 's':
+                Voltar_ao_menu()
+            case 'n':
+                exit()
 
     def Voltar_ao_menu():
         print("Voltando ao menu...")
