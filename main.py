@@ -1,11 +1,13 @@
 import os
-import time 
+import time
+import pandas as pd
 
-
-cidades = ['Belo Horizonte', 'Rio de Janeiro', 'Santa Catarina', 'Salvador']
+lista_arquivo = []
+caminho_arquivo = "/programa de cidade/dados"
 
 def App():
     def Exibir_menu():
+        
         Limpar_terminal()
         escolha = input('''
 𝙷𝚎𝚕𝚕𝚘! 𝚂𝙴𝙹𝙰 - 𝙱𝙴𝙼𝚅𝙸𝙽𝙳𝙾
@@ -13,19 +15,30 @@ def App():
 Digite 1 para visualizar a lista
 Digite 2 para verificar se a sua cidade está na lista: ''')
 
+
+
         # Processamento da escolha
         if escolha == '1':
-            print(f'A lista de cidades é: {cidades}')
+            Mostrar_cidades()
+           
         elif escolha == '2':
             Verificar_cidade_na_lista()
         else:
             print("Opção inválida. Tente novamente.")
             time.sleep(2)
             Exibir_menu()  # Retorna ao menu se a opção for inválida
+    
+    
+    def Mostrar_cidades():
+        #pd.read_csv = vai ser como o arquivo esta salvo o r'' eh para ler caminos
+        lista = pd.read_csv(r'C:\Users\Carlos\Desktop\programa de cidade\dados.csv')
+#             transforma a tabela em uma tring q pode ser mostrada.
+        print(lista.to_string(index=False))
+    
 
     def Verificar_cidade_na_lista():
         cidade_digitada = input("Digite o nome da cidade: ")
-        if cidade_digitada in cidades:
+        if cidade_digitada in lista_arquivo:
             print(f'A cidade {cidade_digitada} está na lista.')
         else:
             print(f'A cidade {cidade_digitada} não está na lista.')
